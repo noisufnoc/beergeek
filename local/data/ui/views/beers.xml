@@ -1,6 +1,13 @@
 <form>
   <label>User Activity</label>
   <fieldset submitButton="false">
+    <input type="dropdown" token="username">
+      <label>Username</label>
+      <prefix>user.user_name="</prefix>
+      <suffix>"</suffix>
+      <default>noisufnoc</default>
+      <populatingSearch fieldForValue="user.user_name" fieldForLabel="user.user_name" earliest="-60d" latest="now"><![CDATA[index=beergeek sourcetype=untappd_checkins | stats count by "user.user_name"]]></populatingSearch>
+    </input>
     <input type="time" token="time">
       <label></label>
       <default>
@@ -14,7 +21,7 @@
       <chart>
         <title>Breweries</title>
         <search>
-          <query>index=beergeek | dedup checkin_id |  top limit=20 "brewery.brewery_name"</query>
+          <query>index=beergeek sourcetype=untappd_checkins $username$ | top limit=20 "brewery.brewery_name"</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -47,7 +54,7 @@
       <chart>
         <title>Beer Styles</title>
         <search>
-          <query>index=beergeek | dedup checkin_id | top limit=20 "beer.beer_style"</query>
+          <query>index=beergeek sourcetype=untappd_checkins $username$ | top limit=20 "beer.beer_style"</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -82,7 +89,7 @@
       <single>
         <title>Average ABV</title>
         <search>
-          <query>index=beergeek | dedup checkin_id | search beer.beer_abv!=0 | stats avg(beer.beer_abv) as avg_abv</query>
+          <query>index=beergeek sourcetype=untappd_checkins $username$ | search beer.beer_abv!=0 | stats avg(beer.beer_abv) as avg_abv</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -106,7 +113,7 @@
       <chart>
         <title>Average Rating</title>
         <search>
-          <query>index=beergeek | dedup checkin_id | search rating_score!=0 | stats avg(rating_score) as avg_rating | gauge avg_rating 0 1 2 3 4 5</query>
+          <query>index=beergeek sourcetype=untappd_checkins $username$ |search rating_score!=0 | stats avg(rating_score) as avg_rating | gauge avg_rating 0 1 2 3 4 5</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -141,7 +148,7 @@
       <table>
         <title>Earned Badges</title>
         <search>
-          <query>index = beergeek | dedup checkin_id | search badges.count&gt;0 | mvexpand "badges.items{}.badge_name" | rename "badges.items{}.badge_name" as Badge | sort - _time | table Badge</query>
+          <query>index = beergeek sourcetype=untappd_checkins $username$ | search badges.count&gt;0 | mvexpand "badges.items{}.badge_name" | rename "badges.items{}.badge_name" as Badge | sort - _time | table Badge</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -158,7 +165,7 @@
       <chart id="beer_by_day">
         <title>Check In Activity by Day</title>
         <search>
-          <query>index=beergeek sourcetype=untappd_checkins | timechart span=1d count as "Check-ins"</query>
+          <query>index=beergeek sourcetype=untappd_checkins $username$ | timechart span=1d count as "Check-ins"</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
@@ -200,7 +207,7 @@
       <table id="beer_by_day_drilldown" depends="$sourcetype$">
         <title>Check-ins on day $sourcetype$</title>
         <search>
-          <query>index=beergeek sourcetype=untappd_checkins | rename brewery.brewery_name as "Brewery", beer.beer_name as "Beer", beer.beer_style as "Style", beer.beer_abv as "ABV" | eval ABV=round(ABV,1) | eval ABV=ABV."%" | eval ABV=if(ABV=="0.0%","Not Available", ABV) | table Brewery Beer Style ABV</query>
+          <query>index=beergeek sourcetype=untappd_checkins $username$ | rename brewery.brewery_name as "Brewery", beer.beer_name as "Beer", beer.beer_style as "Style", beer.beer_abv as "ABV" | eval ABV=round(ABV,1) | eval ABV=ABV."%" | eval ABV=if(ABV=="0.0%","Not Available", ABV) | table Brewery Beer Style ABV</query>
         </search>
         <option name="wrap">true</option>
         <option name="rowNumbers">false</option>

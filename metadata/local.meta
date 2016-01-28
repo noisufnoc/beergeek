@@ -57,7 +57,7 @@ access = read : [ * ], write : [ admin ]
 export = none
 owner = mike
 version = 6.3.2
-modtime = 1453951171.328673000
+modtime = 1454017359.649289000
 
 [views/user_info]
 access = read : [ * ], write : [ admin ]
@@ -65,3 +65,39 @@ export = none
 owner = mike
 version = 6.3.2
 modtime = 1453910957.638787000
+
+[inputs/rest%3A%2F%2Funtappd_checkins_evoeddie]
+version = 6.3.2
+modtime = 1454019583.095475000
+
+[inputs/rest%3A%2F%2Funtappd_checkins_lverderber]
+version = 6.3.2
+modtime = 1454019586.003965000
+
+[savedsearches/Beer%20List]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1454020837.517629000
+
+[savedsearches/Compare%20Users]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1454020844.222541000
+
+[savedsearches/User%20Stats]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1454020851.410187000
+
+[savedsearches/map%20building]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1454020858.054366000
