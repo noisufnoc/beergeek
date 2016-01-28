@@ -1,0 +1,37 @@
+###
+#
+#   Untappd API Inputs:
+#
+#   Note: Untappd API is limited to 100 calls/hour
+#
+###
+
+#[rest://untappd_user]
+#auth_type = none
+#endpoint = https://api.untappd.com/v4/user/info/UNTAPPD_USERNAME
+#http_method = GET
+#index = beergeek
+#index_error_response_codes = 1
+#response_type = json
+#sequential_mode = 0
+#sourcetype = untappd_user
+#streaming_request = 0
+#url_args = compact=true,client_id=CLIENT_ID,client_secret=CLIENT_SECRET
+#disabled = 1
+#polling_interval = 86400
+
+#[rest://untappd_checkins]
+#disabled = 1
+#auth_type = none
+#endpoint = https://api.untappd.com/v4/user/checkins/UNTAPPD_USERNAME
+#http_method = GET
+#index = beergeek
+#index_error_response_codes = 1
+#response_type = json
+#sequential_mode = 0
+#source = untappd
+#sourcetype = untappd_checkins
+#streaming_request = 0
+#url_args = limit=100,client_id=CLIENT_ID,client_secret=CLIENT_SECRET
+#response_handler = UntappdCheckinsEventHandler
+#polling_interval = 600
