@@ -1,0 +1,55 @@
+<form>
+  <fieldset autoRun="true" submitButton="false">
+    <input type="dropdown" token="brewery" searchWhenChanged="true">
+      <label>Select a Brewery:</label>
+      <prefix>brewery.brewery_name="</prefix>
+      <suffix>"</suffix>
+      <default></default>
+      <choice value="*">All</choice>
+      <populatingSearch fieldForValue="brewery.brewery_name" fieldForLabel="brewery.brewery_name" earliest="-60d" latest="now">
+        <![CDATA[index=beergeek sourcetype=untappd_checkins | stats count by "brewery.brewery_name"]]>
+      </populatingSearch>
+    </input>
+    <input type="time" token="time" searchWhenChanged="true">
+      <label>Select a time:</label>
+      <default>Last 24 hours</default>
+    </input>
+  </fieldset>
+      <label>Breweries</label>
+  <fieldset submitButton="false"></fieldset>
+   <search id="brewerySearch">
+          <query>index=beergeek sourcetype=untappd_checkins $brewery$</query>
+      <earliest>$time.earliest$</earliest>
+      <latest>$time.latest$</latest>
+   </search>
+<!--- figure this out -->
+  <row>
+  <panel>
+	  <!-- <search base="brewerySearch"> -->
+	    <!-- <query>| head 1 | rename brewery.brewery_label as url | table url</query> -->
+	    <search>
+          	<query>index=beergeek sourcetype=untappd_checkins $brewery$ | head 1 | rename brewery.brewery_label as url | table url</query>
+	  	<preview>
+		  <set token="brewery_label">$result.url$</set>
+	  </preview>
+  </search>
+    <html>
+    <img src="$brewery_label$" />
+   </html>
+  </panel>
+  </row>
+<!--- figure this out -->
+  <row>
+    <panel>
+      <event>
+        <search base="brewerySearch" />
+      </event>
+    </panel>
+  </row>
+  <label>HTML</label>
+  <fieldset submitButton="false">
+    <input type="text" token="test_link">
+      <label>field1</label>
+    </input>
+  </fieldset>
+</form>

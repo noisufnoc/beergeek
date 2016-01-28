@@ -1,0 +1,23 @@
+<dashboard>
+  <label>User Info</label>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>index=beergeek sourcetype=untappd_user | head 1 | table response.user.user_name</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,67 @@
+[app/ui]
+version = 6.3.2
+modtime = 1453496082.717429000
+
+[app/launcher]
+version = 6.3.2
+modtime = 1453496082.719929000
+
+[indexes/beergeek]
+owner = mike
+version = 6.3.2
+modtime = 1453496104.924759000
+
+[inputs/rest%3A%2F%2Funtappd]
+owner = mike
+version = 6.3.2
+modtime = 1453499270.942364000
+
+[inputs/rest%3A%2F%2Funtappd_checkins]
+version = 6.3.2
+modtime = 1453745712.168603000
+
+[inputs/rest%3A%2F%2Funtappd_user]
+version = 6.3.2
+modtime = 1453751938.912795000
+
+[views/beer_list]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1453910915.559394000
+
+[views/breweries]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1453950174.403248000
+
+[views/locations]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1453910932.426012000
+
+[views/styles]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1453910942.114395000
+
+[views/beers]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1453951171.328673000
+
+[views/user_info]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = mike
+version = 6.3.2
+modtime = 1453910957.638787000

@@ -1,0 +1,14 @@
+<dashboard>
+  <label>Styles</label>
+  <row>
+    <panel>
+      <event>
+        <search>
+          <query>index=beergeek | dedup checkin_id | search "beer.beer_style"="IPA - American"</query>
+          <earliest>1443238836.000</earliest>
+          <latest></latest>
+        </search>
+      </event>
+    </panel>
+  </row>
+</dashboard>
