@@ -1,5 +1,53 @@
-<dashboard>
+<form>
   <label>Locations</label>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="username">
+      <label>Untappd Username</label>
+      <prefix>user.user_name="</prefix>
+      <suffix>"</suffix>
+      <default>noisufnoc</default>
+      <populatingSearch fieldForValue="user.user_name" fieldForLabel="user.user_name" earliest="-60d" latest="now"><![CDATA[index=beergeek sourcetype=untappd_checkins | stats count by "user.user_name"]]></populatingSearch>
+    </input>
+    <input type="time" token="time">
+      <label></label>
+      <default>
+        <earliest>0</earliest>
+        <latest></latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <map>
+        <search>
+          <query>index=beergeek sourcetype=untappd_checkins $username$ brewery.location.brewery_state="*" | lookup geo_attr_us_states.csv state_code as brewery.location.brewery_state OUTPUT state_name | stats count by state_name | geom geo_us_states featureIdField=state_name</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="mapping.choroplethLayer.colorBins">9</option>
+        <option name="mapping.choroplethLayer.colorMode">auto</option>
+        <option name="mapping.choroplethLayer.maximumColor">0xDB5800</option>
+        <option name="mapping.choroplethLayer.minimumColor">0x2F25BA</option>
+        <option name="mapping.choroplethLayer.neutralPoint">0</option>
+        <option name="mapping.choroplethLayer.shapeOpacity">0.75</option>
+        <option name="mapping.choroplethLayer.showBorder">1</option>
+        <option name="mapping.data.maxClusters">100</option>
+        <option name="mapping.drilldown">all</option>
+        <option name="mapping.map.center">(38.2,-93.21)</option>
+        <option name="mapping.map.panning">1</option>
+        <option name="mapping.map.scrollZoom">0</option>
+        <option name="mapping.map.zoom">4</option>
+        <option name="mapping.markerLayer.markerMaxSize">50</option>
+        <option name="mapping.markerLayer.markerMinSize">10</option>
+        <option name="mapping.markerLayer.markerOpacity">0.8</option>
+        <option name="mapping.showTiles">1</option>
+        <option name="mapping.tileLayer.maxZoom">7</option>
+        <option name="mapping.tileLayer.minZoom">0</option>
+        <option name="mapping.tileLayer.tileOpacity">1</option>
+        <option name="mapping.type">choropleth</option>
+      </map>
+    </panel>
+  </row>
   <row>
     <panel>
       <map>
@@ -32,4 +80,4 @@
       </map>
     </panel>
   </row>
-</dashboard>
+</form>
