@@ -26,11 +26,17 @@
         </search>
         <option name="mapping.choroplethLayer.colorBins">9</option>
         <option name="mapping.choroplethLayer.colorMode">auto</option>
-        <option name="mapping.choroplethLayer.maximumColor">0xDB5800</option>
-        <option name="mapping.choroplethLayer.minimumColor">0x2F25BA</option>
+        <option name="mapping.choroplethLayer.maximumColor">0xAF1D12</option>
+        <option name="mapping.choroplethLayer.minimumColor">0xEF6B62</option>
         <option name="mapping.choroplethLayer.neutralPoint">0</option>
+        <option name="mapping.choroplethLayer.shapeOpacity">0.6</option>
+        <option name="mapping.choroplethLayer.showBorder">0</option>
+<!---
+        <option name="mapping.choroplethLayer.minimumColor">0x2F25BA</option>
+        <option name="mapping.choroplethLayer.maximumColor">0xDB5800</option>
         <option name="mapping.choroplethLayer.shapeOpacity">0.75</option>
         <option name="mapping.choroplethLayer.showBorder">1</option>
+-->
         <option name="mapping.data.maxClusters">100</option>
         <option name="mapping.drilldown">all</option>
         <option name="mapping.map.center">(38.2,-93.21)</option>
@@ -45,6 +51,10 @@
         <option name="mapping.tileLayer.minZoom">0</option>
         <option name="mapping.tileLayer.tileOpacity">1</option>
         <option name="mapping.type">choropleth</option>
+	<option name="mapping.tileLayer.url">http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png</option>
+        <option name="mapping.tileLayer.attribution">&amp;copy; &lt;a
+href="http://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt; contributors, &amp;copy;
+&lt;a href="http://cartodb.com/attributions"&gt;CartoDB&lt;/a&gt;</option>
       </map>
     </panel>
   </row>
