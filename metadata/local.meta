@@ -18,11 +18,11 @@ modtime = 1453499270.942364000
 
 [inputs/rest%3A%2F%2Funtappd_checkins]
 version = 6.3.2
-modtime = 1453745712.168603000
+modtime = 1454188750.918540000
 
 [inputs/rest%3A%2F%2Funtappd_user]
 version = 6.3.2
-modtime = 1453751938.912795000
+modtime = 1454188754.890316000
 
 [views/beer_list]
 access = read : [ * ], write : [ admin ]
@@ -68,11 +68,11 @@ modtime = 1453910957.638787000
 
 [inputs/rest%3A%2F%2Funtappd_checkins_evoeddie]
 version = 6.3.2
-modtime = 1454019583.095475000
+modtime = 1454188752.135283000
 
 [inputs/rest%3A%2F%2Funtappd_checkins_lverderber]
 version = 6.3.2
-modtime = 1454019586.003965000
+modtime = 1454188753.597940000
 
 [savedsearches/Beer%20List]
 access = read : [ * ], write : [ admin ]
